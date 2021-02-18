@@ -1,5 +1,6 @@
 from random import randint
 
+
 end = 51
 cards = [('dA', 11), ('d2', 2), ('d3', 3), ('d4', 4), ('d5', 5), ('d6', 6), ('d7', 7), ('d8', 8), ('d9', 9), ('d10', 10), ('dJ', 10), ('dQ', 10), ('dK', 10),
          ('hA', 11), ('h2', 2), ('h3', 3), ('h4', 4), ('h5', 5), ('h6', 6), ('h7', 7), ('h8', 8), ('h9', 9), ('h10', 10), ('hJ', 10), ('hQ', 10), ('hK', 10),
@@ -7,9 +8,10 @@ cards = [('dA', 11), ('d2', 2), ('d3', 3), ('d4', 4), ('d5', 5), ('d6', 6), ('d7
          ('cA', 11), ('c2', 2), ('c3', 3), ('c4', 4), ('c5', 5), ('c6', 6), ('c7', 7), ('c8', 8), ('c9', 9), ('c10', 10), ('cJ', 10), ('cQ', 10), ('cK', 10)]
 reset = cards[:]
 
+
 def print_cards(hand):
     length = len(hand)
-    print('\033[30m+---------------------+  ' * len(hand))
+    print('\033[30m+---------------------+  ' * length)
     for one in range(length):
         if hand[one][0][0] == 'h' or hand[one][0][0] == 'd':
             if hand[one][0][1:] == '10':
@@ -90,18 +92,12 @@ def print_cards(hand):
     print()
     print('\033[30m+---------------------+  ' * len(hand))
 
-def format_card(card):
-    suits = {'d': 'Diamonds', 'h': 'Hearts', 's': 'Spades', 'c': 'Clubs'}
-    faces = {'J': 'Jack', 'Q': 'Queen', 'K': 'King', 'A': 'Ace'}
-    if card[0][1].isdigit() == True:
-        return (card[0][1:] + ' of ' + suits[card[0][0]])
-    else:
-        return (faces[card[0][1]] + ' of ' + suits[card[0][0]])
 
 def pick_card(hand):
     random = randint(0,end)
     hand.append(cards[random])
     cards.remove(cards[random])
+
 
 def amount(hand):
     val = 0
@@ -136,6 +132,7 @@ while chips > 0:
     print_cards(dealer[:1])
     print('Your Cards: ')
     print_cards(player)
+
     decision = 'hit'
     while decision == 'hit' and total < 21:
         decision = (input('\nWould you like to stay or hit? '))
@@ -150,6 +147,7 @@ while chips > 0:
             print('Your Cards: ')
             print_cards(player)
         total = amount(player)
+
     print('\n----> Round Results:')
     if total > 21:
         print('\nDealer\'s Card: ')
@@ -174,6 +172,7 @@ while chips > 0:
             else:
                 print('\n\33[31mDealer Wins!')
                 chips -= int(bet)
+    
     cards = reset[:]
     end = 51
     round += 1
@@ -182,6 +181,7 @@ while chips > 0:
     if chips > int(record):
         file.seek(13)
         file.write(str(chips))
+
 
 print('\n\33[30m' + '-'*150)
 file.seek(13)
