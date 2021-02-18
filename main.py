@@ -97,6 +97,7 @@ def pick_card(hand):
     random = randint(0,end)
     hand.append(cards[random])
     cards.remove(cards[random])
+    end -= 1
 
 
 def amount(hand):
@@ -124,9 +125,7 @@ while chips > 0:
     player, dealer = [], []
     for num in range(2):
         pick_card(player)
-        end -= 1
         pick_card(dealer)
-        end -= 1
     total = amount(player)
     print('\nDealer\'s Card: ')
     print_cards(dealer[:1])
@@ -141,7 +140,6 @@ while chips > 0:
             decision = (input('\nWould you like to stay or hit? '))
         if decision == 'hit':
             pick_card(player)
-            end -= 1
             print('\nDealer\'s Card: ')
             print_cards(dealer[:1])
             print('Your Cards: ')
