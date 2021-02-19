@@ -1,2 +1,2 @@
 # BlackJack
-BlackJack game with textual UI.
+BlackJack game that visually displays hands using ASCII characters. The card display may vary based on where you run the code (IDE, Command Line, etc...). Use virtual environment to access the different colored output.
