@@ -1,1 +1,1 @@
-Chip Record: 16000
+Chip Record: 64000
